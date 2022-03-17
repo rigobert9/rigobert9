@@ -3,7 +3,7 @@ I'm a FOSS, Linux and computer science enthusiast. I'm interested in coding, und
 
 #### Projects
 I'm currently working on some Python school projects.
-- I'm building a chat and exchange platform named Apando with @Taliayaya .
+- I'm building a chat and exchange platform named Apando with @Taliayaya
 
 #### Learning
 I'm learning a bit everyday, and I can't wait to know more.
