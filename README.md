@@ -1,16 +1,19 @@
-### Hi there 👋
+### I'm rigobert9
+I'm a FOSS, Linux and computer science enthusiast. I'm interested in coding, understanding the low level, and gaining more and more control on my device.
 
-<!--
-**rigobert9/rigobert9** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+#### Projects
+I'm currently working on some Python school projects.
+- I'm building a chat and exchange platform named Apando with @Taliayaya .
 
-Here are some ideas to get you started:
+#### Learning
+I'm learning a bit everyday, and I can't wait to know more.
+I'm currently learning :
+- to properly use my beloved Vim
+- to build a Linux From Scratch
+- to script with BASh
+- to code and think with LisP
+- to improve my C
+- to use shell utils
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+#### Work
+I'm currently a student in high school.
