@@ -14,6 +14,7 @@ I'm currently learning :
 - to code and think with LisP
 - to improve my C
 - to use shell utils
+- japanese
 
 #### Work
 I'm currently a student in high school.
