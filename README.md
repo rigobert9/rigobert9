@@ -1,5 +1,5 @@
 ### I'm rigobert9
-I'm a FOSS, Linux and computer science enthusiast. I'm interested in coding, understanding the low level, and gaining more and more control on my device.
+I'm a FOSS, Linux and computer science enthusiast. I'm interested in coding, understanding the low level, and gaining more control and power with my device.
 
 #### Projects
 I'm currently working on some Python school projects.
