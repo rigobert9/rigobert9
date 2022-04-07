@@ -14,6 +14,7 @@ I'm currently learning :
 - to code and think with LisP
 - to improve my C
 - to use shell utils
+- x86 ASM
 - Japanese
 
 #### Work
