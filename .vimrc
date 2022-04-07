@@ -40,8 +40,8 @@ set whichwrap+=<,>,h,l,[,]
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
-" PAY ATTENTION WHE EDITING SENSITIVE INFORMATION ! SOME CONFIDENTIAL COULD BE
-" BACKED UP FOR ALL TO SEE
+" PAY ATTENTION WHE EDITING SENSITIVE INFORMATION ! SOME CONFIDENTIAL INFO
+" COULD BE BACKED UP FOR ALL TO SEE
 " In case of bother with these files that are useless most of the time, you
 " can just take them off instead :
 " set noswapfile
@@ -89,7 +89,7 @@ Plug 'preservim/nerdcommenter'
 " vim-surround adds operations on matching partentheses, tags, brackets ...
 Plug 'tpope/vim-surround'
 " Way more advanced features can be attained with the plugin
-" Matt-A-Bennett/vim-surround-funk; please chack it out if you're interested in
+" Matt-A-Bennett/vim-surround-funk; please check it out if you're interested in
 " gripping whole function calls.
 
 " Quite the complicated plugin, please read the manual or the README of the
