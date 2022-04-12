@@ -258,6 +258,10 @@ function ToggleHex()
   let &modifiable=l:oldmodifiable
 endfunction
 
+" Vim-markdown : allows to use links between markdown files, so you can use
+" knowledge bases like the ones created by Obsidian
+Plug 'preservim/vim-markdown'
+
 " -----------------------------
 "  		Eyecandy
 
