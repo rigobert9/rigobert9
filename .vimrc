@@ -102,6 +102,9 @@ vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+" You can zoom temporarily on a single window, by using "ctrl-w m" on it.
+Plug 'dhruvasagar/vim-zoom'
+
 " -----------------------------
 "  		Project management and IDE
 
@@ -165,15 +168,18 @@ let g:ctrlp_regexp = 1 "Search by regexp by default
 " Gutentags : manages the refreshing of our tags and generates the tags files
 Plug 'ludovicchabant/vim-gutentags'
 
+" THESEPLUGINS NEEDYOU TO CREATE A .vim/sessions/ DIRECTORY
 " Sessions are one damn useful feature : you can save multiple layouts and open
 " files for your different projects.
 " This first approach is simpler and leaner, but you can choose the second plugin
 " instead if you want something easier.
 " These commands just open the command to type, and you complete them.
 " See them at http://www.bit-101.com/techtips/2018/03/31/Vim-sessions/
-nnoremap <Leader>ss :mksession! ~/.vim/sessions/
-nnoremap <Leader>os :source ~/.vim/sessions/
-nnoremap <Leader>rs :!rm ~/.vim/sessions/
+nnoremap <Leader>ss :mksession! ~/.vim/sessions/ " Saves to session
+nnoremap <Leader>os :source ~/.vim/sessions/ " Opens a session
+nnoremap <Leader>rs :!rm ~/.vim/sessions/ " Removes a session
+" There's still another way to do it, check out
+" https://www.abdus.net/blog/2020/session-management-in-vim/#importance-of-session
 " Plug 'xolox/vim-session'
 " Yet another plugin by Tim Pope, that auto-saves most modifications to your
 " session, creates a default Session.vim session if you create an anonyous section
@@ -202,6 +208,7 @@ Plug 'vim-syntastic/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%{ObsessionStatus()}
+set statusline+=%{zoom#statusline()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
@@ -547,3 +554,11 @@ endif
 " 	vim -p -b -c "set binary" --servername HEXVIM <files>
 " Launch in tabs in an existing dedicated Vim hex editor:
 " 	vim -b -c "set binary" --servername HEXVIM --remote-tab-silent <files>
+
+" There are still incredible plugins and features out there : this footer contains some
+" you light want to check out :
+" - https://github.com/dhruvasagar/vim-table-mode, Vim as a spreadsheet
+" - https://github.com/dhruvasagar/vim-audiobox, Vim to control rythmbox
+" - https://github.com/dhruvasagar/vim-github-review, a hard-to-setup plugin to manage github
+"	PRs in Vim
+" - https://github.com/dhruvasagar/vim-marp, Vim for presentations inspired by marp
