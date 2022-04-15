@@ -64,6 +64,15 @@ filetype plugin indent on
 " Highlights the searched word
 set hlsearch
 
+" Activating spell checking
+" To make this feature available, you need to find your dictionnaries
+" These lists of words are often found in /usr/share/dict
+" To use them, you need to generate a binary file for vim : create a .vim/spell 
+" directory, then run :
+" :mksp ~/.vim/spell/[language identifier, like "en"] [path to the dictionnary]
+setlocal spell spelllan=en
+" You can begin to use it with the commands in ":h spell"
+
 " -----------------------------
 "  		Plugins
 
