@@ -562,3 +562,5 @@ endif
 " - https://github.com/dhruvasagar/vim-github-review, a hard-to-setup plugin to manage github
 "	PRs in Vim
 " - https://github.com/dhruvasagar/vim-marp, Vim for presentations inspired by marp
+" - https://github.com/dhruvasagar/vim-dotoo, king of org-mode for Vim, to manage your agenda
+"	and organization
