@@ -103,46 +103,6 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " -----------------------------
-"  		Visual cues
-
-" Colors parentheses, brackets and identation blocks (in html for example),
-" making it easier to read the code, esapecially in LISP
-Plug 'luochen1990/rainbow'
-let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
-
-" Show the marks you placed on your code to help navigation
-Plug 'jeetsukumaran/vim-markology'
-
-" Show syntax errors when you write to a file, but needs to charge some synatx
-" checkers.
-Plug 'vim-syntastic/syntastic'
-" If your language is not supported by the plugins here, just search for
-" language plugins : they often include a syntax checker
-" We will add syntax checkers in the languages section
-" Recommended defaults
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" Changes numbers when in normal mode to show relative numbers, and absolute in
-" insert mode.
-Plug 'myusuf3/numbers.vim'
-" Press F3 to change the numbers mode
-nnoremap <silent> <F3> :NumbersToggle<CR>
-" Default settings, but you can add filetypes if numbers are shown or shown
-" strangely in some files
-let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m', 'netrw']
-
-" vim-better-whitespaces highlights useless whitespaces and provides the function
-" :StripWhiteSpace to get rid of extra whitespace.
-Plug 'ntpeters/vim-better-whitespace'
-
-" -----------------------------
 "  		Project management and IDE
 
 " WE DON'T NEED NERDTREE. This config uses Netrw, the built-in file explorer of
@@ -204,6 +164,63 @@ let g:ctrlp_regexp = 1 "Search by regexp by default
 " We're managing tags (functions across the project) with universal-ctags
 " Gutentags : manages the refreshing of our tags and generates the tags files
 Plug 'ludovicchabant/vim-gutentags'
+
+" Sessions are one damn useful feature : you can save multiple layouts and open
+" files for your different projects.
+" This first approach is simpler and leaner, but you can choose the second plugin
+" instead if you want something easier.
+" These commands just open the command to type, and you complete them.
+" See them at http://www.bit-101.com/techtips/2018/03/31/Vim-sessions/
+nnoremap <Leader>ss :mksession! ~/.vim/sessions/
+nnoremap <Leader>os :source ~/.vim/sessions/
+nnoremap <Leader>rs :!rm ~/.vim/sessions/
+" Plug 'xolox/vim-session'
+" Yet another plugin by Tim Pope, that auto-saves most modifications to your
+" session, creates a default Session.vim session if you create an anonyous section
+" and adds the :Obsess command to start recording changes to a session (stop with
+" :Obsess!)
+Plug 'tpope/vim-obsession'
+
+" -----------------------------
+"  		Visual cues
+
+" Colors parentheses, brackets and identation blocks (in html for example),
+" making it easier to read the code, esapecially in LISP
+Plug 'luochen1990/rainbow'
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+
+" Show the marks you placed on your code to help navigation
+Plug 'jeetsukumaran/vim-markology'
+
+" Show syntax errors when you write to a file, but needs to charge some synatx
+" checkers.
+Plug 'vim-syntastic/syntastic'
+" If your language is not supported by the plugins here, just search for
+" language plugins : they often include a syntax checker
+" We will add syntax checkers in the languages section
+" Recommended defaults
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%{ObsessionStatus()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Changes numbers when in normal mode to show relative numbers, and absolute in
+" insert mode.
+Plug 'myusuf3/numbers.vim'
+" Press F3 to change the numbers mode
+nnoremap <silent> <F3> :NumbersToggle<CR>
+" Default settings, but you can add filetypes if numbers are shown or shown
+" strangely in some files
+let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m', 'netrw']
+
+" vim-better-whitespaces highlights useless whitespaces and provides the function
+" :StripWhiteSpace to get rid of extra whitespace.
+Plug 'ntpeters/vim-better-whitespace'
 
 " -----------------------------
 "  		Language-specific plugins
