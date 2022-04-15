@@ -24,7 +24,7 @@ set nocompatible
 " moving. This parameter allows to have a common basis.
 set term=xterm-256color
 
-" The <leader> key is the comma (","). You can overwrite this to teh key of your choice
+" The <leader> key is the comma (","). You can overwrite this to the key of your choice
 let mapleader=","
 
 let current_compiler = "gcc"
