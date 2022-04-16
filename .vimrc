@@ -70,8 +70,14 @@ set hlsearch
 " To use them, you need to generate a binary file for vim : create a .vim/spell 
 " directory, then run :
 " :mksp ~/.vim/spell/[language identifier, like "en"] [path to the dictionnary]
-setlocal spell spelllan=en
+setlocal spell spelllang=en
 " You can begin to use it with the commands in ":h spell"
+
+" If you want to unload buffers when you abandon them instead of keep them open,
+" you can uncomment this line.
+" Your system will use less memory and files, but some plugins like dotoo prefer
+" staying open.
+set hidden
 
 " -----------------------------
 "  		Plugins
@@ -140,7 +146,7 @@ Plug 'dhruvasagar/vim-zoom'
 " You can uncomment this if you don't want the tabs to sync between instances
 " let g:nerdtree_tabs_synchronize_view=0
 
-" Netrw : the built-in explorer.
+" Netrw : the built-in file explorer.
 let g:netrw_keepdir = 0 " Some fixes
 let g:netrw_liststyle = 3 " By default a tree view
 let g:netrw_winsize = 15 " A smaller split
@@ -199,6 +205,10 @@ nnoremap <Leader>rs :!rm ~/.vim/sessions/ " Removes a session
 " :Obsess!)
 Plug 'tpope/vim-obsession'
 
+" An emacs-org-mode inspired agenda, todo and notes plugin
+" https://github.com/dhruvasagar/vim-dotoo
+Plug 'dhruvasagar/vim-dotoo'
+
 " -----------------------------
 "  		Visual cues
 
@@ -216,13 +226,8 @@ Plug 'vim-syntastic/syntastic'
 " If your language is not supported by the plugins here, just search for
 " language plugins : they often include a syntax checker
 " We will add syntax checkers in the languages section
-" Recommended defaults
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%{ObsessionStatus()}
-set statusline+=%{zoom#statusline()}
-set statusline+=%*
 
+" Recommended defaults
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -301,8 +306,16 @@ Plug 'preservim/vim-markdown'
 " -----------------------------
 "  		Eyecandy
 
-" A clock for Vim, that changes colors according to the tim of the day
+" A clock for Vim, that changes colors according to the time of the day
 Plug 'mopp/sky-color-clock.vim'
+
+" Statusline changes
+" I will soon ditch lightline for a more simple statusline
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%{ObsessionStatus()}
+set statusline+=%{zoom#statusline()}
+set statusline+=%*
 
 " lightline : Yet another status bar for vim
 Plug 'itchyny/lightline.vim'
@@ -581,6 +594,4 @@ endif
 " - https://github.com/dhruvasagar/vim-github-review, a hard-to-setup plugin to manage github
 "	PRs in Vim
 " - https://github.com/dhruvasagar/vim-marp, Vim for presentations inspired by marp
-" - https://github.com/dhruvasagar/vim-dotoo, king of org-mode for Vim, to manage your agenda
-"	and organization
 " - https://github.com/itchyny/screensaver.vim, a screensaver for Vim
