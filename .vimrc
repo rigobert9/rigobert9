@@ -301,6 +301,9 @@ Plug 'preservim/vim-markdown'
 " -----------------------------
 "  		Eyecandy
 
+" A clock for Vim, that changes colors according to the tim of the day
+Plug 'mopp/sky-color-clock.vim'
+
 " lightline : Yet another status bar for vim
 Plug 'itchyny/lightline.vim'
 set laststatus=2 " Fix in the case the line doesn't appear
@@ -314,9 +317,15 @@ let g:lightline = {
       \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead',
-			\		'readonly': 'LightlineReadonly',
-		  \   'fileformat': 'LightlineFileformat',
+      \		'readonly': 'LightlineReadonly',
+      \   'fileformat': 'LightlineFileformat',
       \   'filetype': 'LightlineFiletype',
+      \ },
+      \ 'component': {
+      \   'sky_color_clock': "%#SkyColorClock#%{' ' . sky_color_clock#statusline() . ' '}%#SkyColorClockTemp# ",
+      \ },
+      \ 'component_raw': {
+      \   'sky_color_clock': 1,
       \ },
       \ }
 
@@ -574,3 +583,4 @@ endif
 " - https://github.com/dhruvasagar/vim-marp, Vim for presentations inspired by marp
 " - https://github.com/dhruvasagar/vim-dotoo, king of org-mode for Vim, to manage your agenda
 "	and organization
+" - https://github.com/itchyny/screensaver.vim, a screensaver for Vim
