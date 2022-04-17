@@ -614,7 +614,7 @@ endif
 " 	vim -b -c "set binary" --servername HEXVIM --remote-tab-silent <files>
 
 " There are still incredible plugins and features out there : this footer contains some
-" you light want to check out :
+" you might want to check out :
 " - https://github.com/dhruvasagar/vim-table-mode, Vim as a spreadsheet
 " - https://github.com/dhruvasagar/vim-audiobox, Vim to control rythmbox
 " - https://github.com/dhruvasagar/vim-github-review, a hard-to-setup plugin to manage github
