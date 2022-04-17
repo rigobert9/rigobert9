@@ -125,7 +125,7 @@ Plug 'dhruvasagar/vim-zoom'
 
 " Displays the documentation of the completed function in the echo space
 Plug 'Shougo/echodoc.vim'
-set g:echodoc#enable_at_startup=1 " Getting it up and running directly
+let g:echodoc#enable_at_startup = 1 " Getting it up and running directly
 
 " -----------------------------
 "  		Project management and IDE
