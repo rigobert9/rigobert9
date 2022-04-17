@@ -605,7 +605,7 @@ endif
 " 	and notes plugin
 " - https://github.com/lucidstack/ctrp-tmux.vim, to switch between tmux session from ctrl-p
 " - https://github.com/JazzCore/ctrlp-cmatcher, to get a blazing fast search in ctrl-p with python
-" 	and C
+"	and C
 " - https://github.com/christoomey/vim-system-copy, for further problems with the system clipboard
 " - https://github.com/preservim/vimux, for more interactions with termux
 " - https://github.com/matze/vim-move, if you like the idea of moving more visually you text blocks
