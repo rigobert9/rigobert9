@@ -7,6 +7,12 @@
 " You can also correct it to your liking or document it : any modification can
 " be interesting for me, don't be shy !
 
+" This config should work fine on windows, but you will need to comment out the
+" first paragraph (that auto-installs plug), and install plug yourself.
+
+" vim-plug needs git to work ! Download it first, and you will have mostly nothing
+" else to install.
+
 " -----------------------------
 "			Classic parameters
 
