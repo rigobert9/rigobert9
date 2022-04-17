@@ -182,9 +182,24 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'sgur/ctrlp-extensions.vim'
 " Opens all the extensions
 let g:ctrlp_extensions = ['menu', 'line', 'dir', 'yankring', 'mixed', 'tag',
-											\ 'buffertag', 'cmdline', 'undo', 'changes',
-											\ 'quickfix', 'rtscript', 'bookmarkdir']
+												\ 'buffertag', 'cmdline', 'undo', 'changes',
+												\ 'quickfix', 'rtscript', 'bookmarkdir']
 let g:ctrlp_regexp = 1 "Search by regexp by default
+" There's A LOT of extensions to this plugin. Here's a list of all the fun you
+" can add (names are all repositories on github) :
+" - lucidstack/ctrlp-mpc.vim to manage you songs on mpc
+" - a lot of plugins to switch between tabs
+" - d11wtq/ctrpl_delete.vim to delete open buffers
+" - mattn/ctrp-register to check registers
+" - FriedSock/ctrlpsimilar to navigate in projects
+" - codewithkristian/ctrlp-branches to navigate between git branches
+" - mattn/ctrlp-hackernews to browse HN and search it
+" - zeero/vim-ctrlp-help for vim help finding
+" - zhaohuaxishi/ctrlp-header for standard header in C/C++
+" - mattn/ctrlp-google to search on google
+" - mattn/ctrlp-mcdonald to get a snacc, IDK
+" - MeanEYE/ctrlp-leader-guide to browse your <leader> keybindings
+" - tsuyoshicho/vim-pass to manage passwords with pass
 
 " We're managing tags (functions across the project) with universal-ctags
 " Gutentags : manages the refreshing of our tags and generates the tags files
@@ -310,23 +325,29 @@ endfunction
 " knowledge bases like the ones created by Obsidian
 Plug 'preservim/vim-markdown'
 
+" If you want to use vim as your manpager, which you can do by setting
+" "export MANPAGE="vim -" in your bashrc, this plugin makes it easier and leaner
+Plug 'muru/vim-manpager'
+
 " -----------------------------
 "  		Eyecandy
 
 " A clock for Vim, that changes colors according to the time of the day
 Plug 'mopp/sky-color-clock.vim'
-let g:sky_color_clock#datetime_format='%H:%M %d/%m'
+let g:sky_color_clock#datetime_format='%H:%M'
 " You can modify this format easily. Just know that the year (with only the last
 " two digits) is %y.
+" let g:sky_color_clock#datetime_format='%H:%M %d/%m' (with day and month)
 " Beware that the status line is updated only when you enter keystrokes, so the
 " clock won't be on time if you don't move.
 
 " Statusline
+" To do : display current mode in the bar
 set laststatus=2
 set statusline=
 " Always display the status line
 " Add a few things to the status line : you can have a lot of fun with this
-" part, like showing the price of ETH ort he weather if you want to.
+" part, like showing the price of ETH or he weather if you want to.
 " https://shapeshed.com/vim-statuslines/
 set statusline=
 set statusline+=%#PmenuSel#
@@ -343,8 +364,8 @@ set statusline+=%{zoom#statusline()}
 set statusline+=\ %#warningmsg#
 set statusline+=\ %#CursorColumn#
 set statusline+=\ %y
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\[%{&fileformat}\]
+set statusline+=%{CanEncoding()}
+set statusline+=%{CanFileformat()}
 set statusline+=\ %p%%
 set statusline+=\ %l:%c
 set statusline+=%#SkyColorClock#%{sky_color_clock#statusline()}
@@ -352,13 +373,13 @@ set statusline+=%#SkyColorClock#%{sky_color_clock#statusline()}
 function! IsReadonly()
   return &readonly && &filetype !=# 'help' ? ' |RO|' : ''
 endfunction
-" Those two trim the encoding on smaller windows
-" function! LightlineFileformat()
-"   return winwidth(0) > 70 ? &fileformat : ''
-" endfunction
-" function! LightlineFiletype()
-"   return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
-" endfunction
+" Those trim some information on smaller windows
+function! CanFileformat()
+	return winwidth(0) > 80 ? '[' . &fileformat . ']' : ''
+endfunction
+function! CanEncoding()
+  return winwidth(0) > 70 ? (&fileencoding?&fileencoding:&encoding) : ''
+endfunction
 
 " Hightlight the yanked text, because why not
 Plug 'machakann/vim-highlightedyank'
@@ -609,3 +630,5 @@ endif
 " - https://github.com/preservim/vimux, for more interactions with termux
 " - https://github.com/matze/vim-move, if you like the idea of moving more visually you text blocks
 " - https://github.com/Shougo/echodoc.vim, displays function information in the echo line
+" - https://github.com/lambdalisue/vim-gista, to browse gistson github (there's
+"   also a ctrlp extension)
