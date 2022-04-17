@@ -7,12 +7,6 @@
 " You can also correct it to your liking or document it : any modification can
 " be interesting for me, don't be shy !
 
-" This config should work fine on windows, but you will need to comment out the
-" first paragraph (that auto-installs plug), and install plug yourself.
-
-" vim-plug needs git to work ! Download it first, and you will have mostly nothing
-" else to install.
-
 " -----------------------------
 "			Classic parameters
 
@@ -38,7 +32,7 @@ set encoding=UTF-8
 set ai
 set nu
 set tw=80
-" Let's go for 2-spaces indentations, Prettier can take care of the rest
+" Less go for 2-spaces indentations, Prettier can take care of the rest
 set ts=2
 set shiftwidth=2
 " You can wrap with all commands
@@ -49,7 +43,7 @@ set whichwrap+=<,>,h,l,[,]
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
-" PAY ATTENTION WHEN EDITING SENSITIVE INFORMATION ! SOME CONFIDENTIAL INFO
+" PAY ATTENTION WHE EDITING SENSITIVE INFORMATION ! SOME CONFIDENTIAL INFO
 " COULD BE BACKED UP FOR ALL TO SEE
 " In case of bother with these files that are useless most of the time, you
 " can just take them off instead :
@@ -152,6 +146,10 @@ Plug 'dhruvasagar/vim-zoom'
 " You can uncomment this if you don't want the tabs to sync between instances
 " let g:nerdtree_tabs_synchronize_view=0
 
+" A plugin for git, adds a status icon for files in a git repo
+" It needs to be plugged last.
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+
 " Netrw : the built-in file explorer.
 let g:netrw_keepdir = 0 " Some fixes
 let g:netrw_liststyle = 3 " By default a tree view
@@ -184,8 +182,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'sgur/ctrlp-extensions.vim'
 " Opens all the extensions
 let g:ctrlp_extensions = ['menu', 'line', 'dir', 'yankring', 'mixed', 'tag',
-												\ 'buffertag', 'cmdline', 'undo', 'changes',
-												\ 'quickfix', 'rtscript', 'bookmarkdir']
+											\ 'buffertag', 'cmdline', 'undo', 'changes',
+											\ 'quickfix', 'rtscript', 'bookmarkdir']
 let g:ctrlp_regexp = 1 "Search by regexp by default
 
 " We're managing tags (functions across the project) with universal-ctags
@@ -317,64 +315,59 @@ Plug 'preservim/vim-markdown'
 
 " A clock for Vim, that changes colors according to the time of the day
 Plug 'mopp/sky-color-clock.vim'
+let g:sky_color_clock#datetime_format='%H:%M %d/%m'
+" You can modify this format easily. Just know that the year (with only the last
+" two digits) is %y.
+" Beware that the status line is updated only when you enter keystrokes, so the
+" clock won't be on time if you don't move.
 
-" Statusline changes
-" I will soon ditch lightline for a more simple statusline
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%{ObsessionStatus()}
+" Statusline
+set laststatus=2
+set statusline=
+" Always display the status line
+" Add a few things to the status line : you can have a lot of fun with this
+" part, like showing the price of ETH ort he weather if you want to.
+" https://shapeshed.com/vim-statuslines/
+set statusline=
+set statusline+=%#PmenuSel#
+set statusline+=%{FugitiveHead()}
+" Uses fugitive to get the git status
+set statusline+=%#LineNr#
+set statusline+=\ %f
+set statusline+=%m
+set statusline+=%{IsReadonly()}
+set statusline+=\ %{SyntasticStatuslineFlag()}
+set statusline+=\ %{ObsessionStatus()}
+set statusline+=%=
 set statusline+=%{zoom#statusline()}
-set statusline+=%*
+set statusline+=\ %#warningmsg#
+set statusline+=\ %#CursorColumn#
+set statusline+=\ %y
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\[%{&fileformat}\]
+set statusline+=\ %p%%
+set statusline+=\ %l:%c
+set statusline+=%#SkyColorClock#%{sky_color_clock#statusline()}
 
-" lightline : Yet another status bar for vim
-Plug 'itchyny/lightline.vim'
-set laststatus=2 " Fix in the case the line doesn't appear
-" It can be heavily modified : the following lines are my very own preference
-set noshowmode " Hides the original indicator
-let g:lightline = {
-      \ 'colorscheme': 'darcula',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead',
-      \		'readonly': 'LightlineReadonly',
-      \   'fileformat': 'LightlineFileformat',
-      \   'filetype': 'LightlineFiletype',
-      \ },
-      \ 'component': {
-      \   'sky_color_clock': "%#SkyColorClock#%{' ' . sky_color_clock#statusline() . ' '}%#SkyColorClockTemp# ",
-      \ },
-      \ 'component_raw': {
-      \   'sky_color_clock': 1,
-      \ },
-      \ }
-
-function! LightlineReadonly()
-  return &readonly && &filetype !=# 'help' ? 'RO' : ''
+function! IsReadonly()
+  return &readonly && &filetype !=# 'help' ? ' |RO|' : ''
 endfunction
 " Those two trim the encoding on smaller windows
-function! LightlineFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-function! LightlineFiletype()
-  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
-endfunction
-" A ton of tips and tricks are available on the github repository of the project
-" Go check it out if you want anything more out from your status bar !
+" function! LightlineFileformat()
+"   return winwidth(0) > 70 ? &fileformat : ''
+" endfunction
+" function! LightlineFiletype()
+"   return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+" endfunction
 
 " Hightlight the yanked text, because why not
 Plug 'machakann/vim-highlightedyank'
 
-"  These two plugins need to be plugged last, there's a risk of collision
+"  This plugin needs to be plugged last, there's a risk of collision
 "  otherwise
 
-" A plugin for git, adds a status icon for files in a git repo
-" Plug 'Xuyuanp/nerdtree-git-plugin'
-
 " A plugin to get nice icons for each file type
-" It needs nerd-fonts, that you can install through the install script
+" It needs nerd-fonts
 " Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
@@ -611,7 +604,7 @@ endif
 " 	and notes plugin
 " - https://github.com/lucidstack/ctrp-tmux.vim, to switch between tmux session from ctrl-p
 " - https://github.com/JazzCore/ctrlp-cmatcher, to get a blazing fast search in ctrl-p with python
-"	and C
+" 	and C
 " - https://github.com/christoomey/vim-system-copy, for further problems with the system clipboard
 " - https://github.com/preservim/vimux, for more interactions with termux
 " - https://github.com/matze/vim-move, if you like the idea of moving more visually you text blocks
