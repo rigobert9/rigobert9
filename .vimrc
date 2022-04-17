@@ -39,7 +39,7 @@ set shiftwidth=2
 set whichwrap+=<,>,h,l,[,]
 
 " Managing vim swaps, to keep work safe and without bloating the system
-" MAKE SURE TO CREATE THESE DIRECTORIES AS VIM WON'T DO IT ITSELF
+" MAKE SURE TO CREATE DIRECTORIES AS VIM WON'T DO IT ITSELF
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
@@ -123,6 +123,10 @@ nmap ga <Plug>(EasyAlign)
 " You can zoom temporarily on a single window, by using "ctrl-w m" on it.
 Plug 'dhruvasagar/vim-zoom'
 
+" Displays the documentation of the completed function in the echo space
+Plug 'Shougo/echodoc.vim'
+set g:echodoc#enable_at_startup=1 " Getting it up and running directly
+
 " -----------------------------
 "  		Project management and IDE
 
@@ -185,17 +189,24 @@ let g:ctrlp_regexp = 1 "Search by regexp by default
 " We're managing tags (functions across the project) with universal-ctags
 " Gutentags : manages the refreshing of our tags and generates the tags files
 Plug 'ludovicchabant/vim-gutentags'
+" and adding a bit more to it
+Plug 'skywind3000/gutentags_plus'
 
-" THESEPLUGINS NEEDYOU TO CREATE A .vim/sessions/ DIRECTORY
+" THESE PLUGINS NEED YOU TO CREATE A .vim/sessions/ DIRECTORY
 " Sessions are one damn useful feature : you can save multiple layouts and open
 " files for your different projects.
 " This first approach is simpler and leaner, but you can choose the second plugin
 " instead if you want something easier.
 " These commands just open the command to type, and you complete them.
 " See them at http://www.bit-101.com/techtips/2018/03/31/Vim-sessions/
-nnoremap <Leader>ss :mksession! ~/.vim/sessions/ " Saves to session
-nnoremap <Leader>os :source ~/.vim/sessions/ " Opens a session
-nnoremap <Leader>rs :!rm ~/.vim/sessions/ " Removes a session
+nnoremap <Leader>ss :mksession! ~/.vim/sessions/
+" Saves to session
+nnoremap <Leader>os :source ~/.vim/sessions/
+" Opens a session
+nnoremap <Leader>rs :!rm ~/.vim/sessions/
+" Removes a session
+" I might add the possibility to save a variable for theses three commands later
+
 " There's still another way to do it, check out
 " https://www.abdus.net/blog/2020/session-management-in-vim/#importance-of-session
 " Plug 'xolox/vim-session'
@@ -204,10 +215,6 @@ nnoremap <Leader>rs :!rm ~/.vim/sessions/ " Removes a session
 " and adds the :Obsess command to start recording changes to a session (stop with
 " :Obsess!)
 Plug 'tpope/vim-obsession'
-
-" An emacs-org-mode inspired agenda, todo and notes plugin
-" https://github.com/dhruvasagar/vim-dotoo
-Plug 'dhruvasagar/vim-dotoo'
 
 " -----------------------------
 "  		Visual cues
@@ -354,6 +361,9 @@ function! LightlineFiletype()
 endfunction
 " A ton of tips and tricks are available on the github repository of the project
 " Go check it out if you want anything more out from your status bar !
+
+" Hightlight the yanked text, because why not
+Plug 'machakann/vim-highlightedyank'
 
 "  These two plugins need to be plugged last, there's a risk of collision
 "  otherwise
@@ -595,3 +605,11 @@ endif
 "	PRs in Vim
 " - https://github.com/dhruvasagar/vim-marp, Vim for presentations inspired by marp
 " - https://github.com/itchyny/screensaver.vim, a screensaver for Vim
+" - https://github.com/dhruvasagar/vim-dotoo, an emacs-org-mode inspired agenda, todo
+" 	and notes plugin
+" - https://github.com/lucidstack/ctrp-tmux.vim, to switch between tmux session from ctrl-p
+" - https://github.com/JazzCore/ctrlp-cmatcher, to get a blazing fast search in ctrl-p with python
+" 	and C
+" - https://github.com/christoomey/vim-system-copy, for further problems with the system clipboard
+" - https://github.com/preservim/vimux, for more interactions with termux
+" - https://github.com/matze/vim-move, if you like the idea of moving more visually you text blocks
