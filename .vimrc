@@ -32,7 +32,7 @@ set encoding=UTF-8
 set ai
 set nu
 set tw=80
-" Less go for 2-spaces indentations, Prettier can take care of the rest
+" Let's go for 2-spaces indentations, Prettier can take care of the rest
 set ts=2
 set shiftwidth=2
 " You can wrap with all commands
@@ -43,7 +43,7 @@ set whichwrap+=<,>,h,l,[,]
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
-" PAY ATTENTION WHE EDITING SENSITIVE INFORMATION ! SOME CONFIDENTIAL INFO
+" PAY ATTENTION WHEN EDITING SENSITIVE INFORMATION ! SOME CONFIDENTIAL INFO
 " COULD BE BACKED UP FOR ALL TO SEE
 " In case of bother with these files that are useless most of the time, you
 " can just take them off instead :
