@@ -123,10 +123,6 @@ nmap ga <Plug>(EasyAlign)
 " You can zoom temporarily on a single window, by using "ctrl-w m" on it.
 Plug 'dhruvasagar/vim-zoom'
 
-" Displays the documentation of the completed function in the echo space
-Plug 'Shougo/echodoc.vim'
-let g:echodoc#enable_at_startup = 1 " Getting it up and running directly
-
 " -----------------------------
 "  		Project management and IDE
 
@@ -613,3 +609,4 @@ endif
 " - https://github.com/christoomey/vim-system-copy, for further problems with the system clipboard
 " - https://github.com/preservim/vimux, for more interactions with termux
 " - https://github.com/matze/vim-move, if you like the idea of moving more visually you text blocks
+" - https://github.com/Shougo/echodoc.vim, displays function information in the echo line
