@@ -165,6 +165,18 @@ nmap ga <Plug>(EasyAlign)
 " You can zoom temporarily on a single window, by using "ctrl-w m" on it.
 Plug 'dhruvasagar/vim-zoom'
 
+" Adding snippets, that you can create, import, and enter
+Plug 'SirVer/ultisnips'
+let g:UltiSnipsExpandTrigger="**"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" Adding snippets
+Plug 'honza/vim-snippets'
+
 " -----------------------------
 "        Project management and IDE
 
@@ -417,7 +429,7 @@ set statusline=
 set statusline=
 set statusline+=%#Comment#
 set statusline+=%{winnr()}
-set statusline+=%{FugitiveHead()}\ >
+set statusline+=%#PreProc#\ %{FugitiveHead()}\ >
 " Uses fugitive to get the git status
 set statusline+=%#LineNr#
 set statusline+=\ %f
