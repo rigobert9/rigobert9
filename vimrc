@@ -558,8 +558,8 @@ augroup netrw_mapping
     autocmd!
     autocmd filetype netrw call NetrwMapping()
     " Doesn't use Markology in netrw tabs
-    autocmd FileType netrw call markology#MarkologyDisable()
-    autocmd FileType netrw :setlocal statusline=%#Comment#%{winnr()}%=%p%%
+    autocmd FileType netrw call markology#MarkologyToggle()
+    autocmd FileType netrw setlocal statusline=%#Comment#%{winnr()}%=%p%%
 augroup END
 
 " Vim's meant to be used with buffers and you might take a liking to it
