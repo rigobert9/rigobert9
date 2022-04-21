@@ -121,6 +121,12 @@ set ignorecase
 set smartcase
 set incsearch
 
+" Don't show numbers in the vim manual
+augroup VimHelp
+    autocmd!
+    autocmd FileType help :setlocal nonumber
+augroup END
+
 " -----------------------------
 "        Plugins
 
@@ -167,7 +173,7 @@ Plug 'dhruvasagar/vim-zoom'
 
 " Adding snippets, that you can create, import, and enter
 Plug 'SirVer/ultisnips'
-let g:UltiSnipsExpandTrigger="**"
+let g:UltiSnipsExpandTrigger="%%"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
@@ -569,8 +575,7 @@ endfunction
 augroup netrw_mapping
     autocmd!
     autocmd filetype netrw call NetrwMapping()
-    " Doesn't use Markology in netrw tabs
-    autocmd FileType netrw call markology#MarkologyToggle()
+    " Find something to hide markology
     autocmd FileType netrw setlocal statusline=%#Comment#%{winnr()}%=%p%%
 augroup END
 
