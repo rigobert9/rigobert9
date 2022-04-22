@@ -121,6 +121,8 @@ set ignorecase
 set smartcase
 set incsearch
 
+" To do : Pomodoro in vimscript for my statusline
+
 " -----------------------------
 "        Plugins
 
@@ -166,6 +168,8 @@ nmap ga <Plug>(EasyAlign)
 Plug 'dhruvasagar/vim-zoom'
 
 " Adding snippets, that you can create, import, and enter
+" This plugin seems to be one of the best, but needs python. If you'd prefer to
+" stick to a VimScript solution, please take a look at SnipMate !
 Plug 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger="**"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
