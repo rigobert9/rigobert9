@@ -123,6 +123,12 @@ set incsearch
 
 " To do : Pomodoro in vimscript for my statusline
 
+" Don't show numbers in the vim manual
+augroup VimHelp
+    autocmd!
+    autocmd FileType help :setlocal nonumber
+augroup END
+
 " -----------------------------
 "        Plugins
 
@@ -171,7 +177,7 @@ Plug 'dhruvasagar/vim-zoom'
 " This plugin seems to be one of the best, but needs python. If you'd prefer to
 " stick to a VimScript solution, please take a look at SnipMate !
 Plug 'SirVer/ultisnips'
-let g:UltiSnipsExpandTrigger="**"
+let g:UltiSnipsExpandTrigger="%%"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
@@ -573,9 +579,8 @@ endfunction
 augroup netrw_mapping
     autocmd!
     autocmd filetype netrw call NetrwMapping()
-    " Doesn't use Markology in netrw tabs
-    autocmd FileType netrw call markology#MarkologyDisable()
-    autocmd FileType netrw :setlocal statusline=%#Comment#%{winnr()}%=%p%%
+    " Find something to hide markology
+    autocmd FileType netrw setlocal statusline=%#Comment#%{winnr()}%=%p%%
 augroup END
 
 " Vim's meant to be used with buffers and you might take a liking to it
