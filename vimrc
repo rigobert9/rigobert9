@@ -121,8 +121,6 @@ set ignorecase
 set smartcase
 set incsearch
 
-" To do : Pomodoro in vimscript for my statusline
-
 " Don't show numbers in the vim manual
 augroup VimHelp
     autocmd!
@@ -325,8 +323,22 @@ nnoremap <leader>wv :vsp<CR>:VimwikiIndex<CR>
 " A bit of organization, maybe. This plugin helps using taskwarrior, a todo
 " program to keep track of what you have to do.
 " This plugin needs taskwarrior to work.
-" Plug 'blindFS/vim-taskwarrior'
+Plug 'blindFS/vim-taskwarrior'
 " Gotta plug it back again when I download taskwarrior
+" I want it to open every time I open Vim.
+
+" A small plugin for those who use the pomodoro technique to get things done
+Plug 'tricktux/pomodoro.vim'
+" Duration of a pomodoro in minutes (default: 25)
+let g:pomodoro_time_work = 25
+" Duration of a break in minutes (default: 5)
+let g:pomodoro_time_slack = 5 
+" Log completed pomodoros, 0 = False, 1 = True (default: 0)
+let g:pomodoro_do_log = 0 
+" Path to the pomodoro log file (default: /tmp/pomodoro.log)
+let g:pomodoro_log_file = "/tmp/pomodoro.log" 
+" Get general notifications
+let g:pomodoro_notification_cmd = 'notify-send "Pomodoro finished"'
 
 " -----------------------------
 "        Visual cues
@@ -469,6 +481,7 @@ set statusline+=\ %{ObsessionStatus()}
 set statusline+=%=
 set statusline+=%{zoom#statusline()}
 set statusline+=\ %#warningmsg#
+set statusline+=%{pomo#status_bar()}
 set statusline+=\ %#CursorColumn#
 set statusline+=%y
 set statusline+=%{CanEncoding()}
