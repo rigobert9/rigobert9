@@ -319,6 +319,8 @@ Plug 'vimwiki/vimwiki'
 let g:vimwiki_list = [{'path': '~/.vim/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 " The path is under .vim
+" A simple command to open the wiki in a new vsplit
+nnoremap <leader>wv :vsp<CR>:VimwikiIndex<CR>
 
 " A bit of organization, maybe. This plugin helps using taskwarrior, a todo
 " program to keep track of what you have to do.
