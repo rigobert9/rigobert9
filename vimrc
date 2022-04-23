@@ -58,7 +58,6 @@ set undodir=~/.vim/undo//
 set history=500
 set undolevels=500
 
-set autochdir
 set backspace=indent,eol,start
 
 filetype plugin indent on
@@ -222,6 +221,17 @@ let g:netrw_browse_split = 4 " Opens the file in the last window
 let g:netrw_altv = 1
 " Uncomment this if you want your marked files to be highlighted like search results
 " hi! link netrwMarkFile Search
+" Also getting an empty buffer and the Lexplore when opening a directory
+" Thanks to
+" https://vi.stackexchange.com/questions/18621/how-to-make-vim-open-two-windows-when-opening-a-directory-or-file-with-netrw
+augroup OpenLexploreOnStartup
+    autocmd!
+    autocmd VimEnter * if isdirectory(@%)
+            \|   rightb vnew | exec 'vertical resize '. string(&columns * 0.7)
+            \|   let g:netrw_chgwin = winnr()
+            \| endif
+            \| wincmd p
+augroup END
 
 " fugitive : git wrapper, to help you while using git.
 Plug 'tpope/vim-fugitive'
