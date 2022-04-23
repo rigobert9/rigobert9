@@ -299,9 +299,9 @@ nnoremap <Leader>ts :Obsession ~/.vim/sessions/
 " https://www.abdus.net/blog/2020/session-management-in-vim/#importance-of-session
 " Plug 'xolox/vim-session'
 " Yet another plugin by Tim Pope, that auto-saves most modifications to your
-" session, creates a default Session.vim session if you create an anonyous section
-" and adds the :Obsess command to start recording changes to a session (stop with
-" :Obsess!)
+" session, creates a default Session.vim session if you create an anonymous section
+" and adds the :Obsession command to start recording changes to a session (stop with
+" :Obsession!)
 Plug 'tpope/vim-obsession'
 
 " Ignore whitespace in diffs
@@ -309,11 +309,28 @@ if &diff
   set diffopt+=iwhite
 endif
 
+" Manages a personal wiki with Vim : you can organise a personal notes space,
+" todos, or a full-fledged linked base.
+Plug 'vimwiki/vimwiki'
+" I personally prefer formatting in markdown
+" If you want to convert to HTML, you will have to use another tool though. If
+" you want to stick to the plugin's syntax, delete the 'syntax' part of the line
+" underneath :
+let g:vimwiki_list = [{'path': '~/.vim/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+" The path is under .vim
+
+" A bit of organization, maybe. This plugin helps using taskwarrior, a todo
+" program to keep track of what you have to do.
+" This plugin needs taskwarrior to work.
+" Plug 'blindFS/vim-taskwarrior'
+" Gotta plug it back again when I download taskwarrior
+
 " -----------------------------
 "        Visual cues
 
-" Colors parentheses, brackets and identation blocks (in html for example),
-" making it easier to read the code, esapecially in LISP
+" Colors parentheses, brackets and indentation blocks (in html for example),
+" making it easier to read the code, especially in LISP
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 
@@ -351,7 +368,7 @@ set list
 set listchars=tab:»\ ,trail:·,extends:>,precedes:<
 
 " -----------------------------
-"  		Language-specific plugins
+"        Language-specific plugins
 
 " vim-pdf : Read pdf files with vim. Needs the xpdf utility to be installed, as
 " it uses the pdftotext command.
