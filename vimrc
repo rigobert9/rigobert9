@@ -227,7 +227,7 @@ let g:netrw_altv = 1
 augroup OpenLexploreOnStartup
     autocmd!
     autocmd VimEnter * if isdirectory(@%)
-            \|   rightb vnew | exec 'vertical resize '. string(&columns * 0.7)
+            \|   rightb vnew | exec 'only' | exec 'Lexplore'
             \|   let g:netrw_chgwin = winnr()
             \| endif
             \| wincmd p
