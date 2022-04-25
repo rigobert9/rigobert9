@@ -172,6 +172,8 @@ nmap ga <Plug>(EasyAlign)
 Plug 'dhruvasagar/vim-zoom'
 
 " Adding snippets, that you can create, import, and enter
+" This plugin seems to be one of the best, but needs python. If you'd prefer to
+" stick to a VimScript solution, please take a look at SnipMate !
 Plug 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger="%%"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -295,9 +297,9 @@ nnoremap <Leader>ts :Obsession ~/.vim/sessions/
 " https://www.abdus.net/blog/2020/session-management-in-vim/#importance-of-session
 " Plug 'xolox/vim-session'
 " Yet another plugin by Tim Pope, that auto-saves most modifications to your
-" session, creates a default Session.vim session if you create an anonyous section
-" and adds the :Obsess command to start recording changes to a session (stop with
-" :Obsess!)
+" session, creates a default Session.vim session if you create an anonymous section
+" and adds the :Obsession command to start recording changes to a session (stop with
+" :Obsession!)
 Plug 'tpope/vim-obsession'
 
 " Ignore whitespace in diffs
@@ -305,11 +307,44 @@ if &diff
   set diffopt+=iwhite
 endif
 
+" Manages a personal wiki with Vim : you can organise a personal notes space,
+" todos, or a full-fledged linked base.
+Plug 'vimwiki/vimwiki'
+" I personally prefer formatting in markdown
+" If you want to convert to HTML, you will have to use another tool though. If
+" you want to stick to the plugin's syntax, delete the 'syntax' part of the line
+" underneath :
+let g:vimwiki_list = [{'path': '~/.vim/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+" The path is under .vim
+" A simple command to open the wiki in a new vsplit
+nnoremap <leader>wv :vsp<CR>:VimwikiIndex<CR>
+
+" A bit of organization, maybe. This plugin helps using taskwarrior, a todo
+" program to keep track of what you have to do.
+" This plugin needs taskwarrior to work.
+Plug 'blindFS/vim-taskwarrior'
+" Gotta plug it back again when I download taskwarrior
+" I want it to open every time I open Vim.
+
+" A small plugin for those who use the pomodoro technique to get things done
+Plug 'tricktux/pomodoro.vim'
+" Duration of a pomodoro in minutes (default: 25)
+let g:pomodoro_time_work = 25
+" Duration of a break in minutes (default: 5)
+let g:pomodoro_time_slack = 5 
+" Log completed pomodoros, 0 = False, 1 = True (default: 0)
+let g:pomodoro_do_log = 0 
+" Path to the pomodoro log file (default: /tmp/pomodoro.log)
+let g:pomodoro_log_file = "/tmp/pomodoro.log" 
+" Get general notifications
+let g:pomodoro_notification_cmd = 'notify-send "Pomodoro finished"'
+
 " -----------------------------
 "        Visual cues
 
-" Colors parentheses, brackets and identation blocks (in html for example),
-" making it easier to read the code, esapecially in LISP
+" Colors parentheses, brackets and indentation blocks (in html for example),
+" making it easier to read the code, especially in LISP
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 
@@ -347,7 +382,7 @@ set list
 set listchars=tab:»\ ,trail:·,extends:>,precedes:<
 
 " -----------------------------
-"  		Language-specific plugins
+"        Language-specific plugins
 
 " vim-pdf : Read pdf files with vim. Needs the xpdf utility to be installed, as
 " it uses the pdftotext command.
@@ -446,6 +481,7 @@ set statusline+=\ %{ObsessionStatus()}
 set statusline+=%=
 set statusline+=%{zoom#statusline()}
 set statusline+=\ %#warningmsg#
+set statusline+=%{pomo#status_bar()}
 set statusline+=\ %#CursorColumn#
 set statusline+=%y
 set statusline+=%{CanEncoding()}
