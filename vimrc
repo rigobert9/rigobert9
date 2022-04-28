@@ -230,7 +230,8 @@ augroup OpenLexploreOnStartup
             \|   rightb vnew | exec 'only' | exec 'Lexplore'
             \|   let g:netrw_chgwin = winnr()
             \| endif
-            \| wincmd p
+            "\| wincmd p
+            " If you want to set the pointer on the empty buffer
 augroup END
 
 " fugitive : git wrapper, to help you while using git.
@@ -301,7 +302,7 @@ nnoremap <Leader>rs :!rm ~/.vim/sessions/
 " Removes a session
 " I might add the possibility to save a variable for theses three commands later
 " Obsess over a session (you can stop with :Obsession!)
-nnoremap <Leader>ts :Obsession ~/.vim/sessions/
+" nnoremap <Leader>ts :Obsession ~/.vim/sessions/
 
 " There's still another way to do it, check out
 " https://www.abdus.net/blog/2020/session-management-in-vim/#importance-of-session
@@ -310,7 +311,9 @@ nnoremap <Leader>ts :Obsession ~/.vim/sessions/
 " session, creates a default Session.vim session if you create an anonymous section
 " and adds the :Obsession command to start recording changes to a session (stop with
 " :Obsession!)
-Plug 'tpope/vim-obsession'
+" Plug 'tpope/vim-obsession'
+" I found myself not using this plugin much, but you can uncomment it if you
+" want to try it.
 
 " Ignore whitespace in diffs
 if &diff
@@ -456,6 +459,13 @@ Plug 'muru/vim-manpager'
 " directly.
 Plug 'tpope/vim-endwise'
 
+" Linting for Web projects
+Plug 'prettier/vim-prettier'
+
+" Autoinserting the closing tag in HTML, and formatting it if you type > a
+" second time.
+Plug 'alvan/vim-closetag'
+
 " -----------------------------
 "        Eyecandy
 
@@ -487,7 +497,7 @@ set statusline+=\ %f
 set statusline+=%m
 set statusline+=%#Constant#%{IsReadonly()}
 set statusline+=\ %{SyntasticStatuslineFlag()}
-set statusline+=\ %{ObsessionStatus()}
+" set statusline+=\ %{ObsessionStatus()}
 set statusline+=%=
 set statusline+=%{zoom#statusline()}
 set statusline+=\ %#warningmsg#
