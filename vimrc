@@ -717,7 +717,11 @@ augroup END
 
 " For Python, runs the file when F5 is pressed
 nnoremap <silent> <F5> :!clear;python %<CR>
-au Filetype py setl et ts=4 sw=4
+augroup PythonFiles
+    autocmd!
+    autocmd Filetype python setlocal et ts=4 sw=4
+    autocmd Filetype python setlocal foldmethod=indent
+augroup END
 
 " Wrapping isn't used by a lot of web developers, so it's unset
 augroup WebFiles
