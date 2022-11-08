@@ -1,21 +1,18 @@
 ### I'm rigobert9
-I'm a FOSS, Linux and computer science enthusiast. I'm interested in coding, understanding the low level, and gaining more control and power with my device.
+I'm a Libre software, Linux, maths and computer science enthusiast. I'm interested in coding, understanding the low level, and gaining more control and power with my device.
 
 #### Projects
-I'm currently working on some Python school projects.
+I'm currently working on some C and OCaML school projects.
 - I'm building a chat and exchange platform named Apando with @Taliayaya
 
 #### Learning
 I'm learning a bit everyday, and I can't wait to know more.
 I'm currently learning :
-- to properly use my beloved Vim
-- to build a Linux From Scratch
-- to script with BASh
 - to code and think with LisP
-- to improve my C
 - to use shell utils
-- x86 ASM
-- Japanese
+- to speak Japanese
+- to write software in Zig
+- to understand quantum programmation
 
 #### Work
-I'm currently a student in high school.
+I'm currently a student in French preparatory school (CPGE).
