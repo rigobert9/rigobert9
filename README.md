@@ -12,7 +12,7 @@ I'm currently learning :
 - to use shell utils
 - to speak Japanese
 - to write software in Zig
-- to understand quantum programmation
+- to understand quantum programming
 
 #### Work
 I'm currently a student in French preparatory school (CPGE).
